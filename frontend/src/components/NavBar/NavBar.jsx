@@ -13,8 +13,8 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav className="NavBar">
-      <NavLink to="/">Home</NavLink>
-      &nbsp; | &nbsp;
+     
+     
       {user ? (
         <>
           <NavLink to="/posts" end>
@@ -30,7 +30,9 @@ export default function NavBar({ user, setUser }) {
           <span>Welcome, {user.name}</span>
         </>
       ) : (
-        <>
+          <>
+            <NavLink to="/">Home</NavLink>
+             &nbsp; | &nbsp;
           <NavLink to="/login">Log In</NavLink>
           &nbsp; | &nbsp;
           <NavLink to="/signup">Sign Up</NavLink>
