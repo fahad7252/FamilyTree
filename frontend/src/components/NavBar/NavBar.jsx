@@ -1,4 +1,4 @@
-import { NavLink, Link, useNavigate } from 'react-router';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { logOut } from '../../services/authService';
 import './NavBar.css';
 
@@ -17,6 +17,8 @@ export default function NavBar({ user, setUser }) {
      
       {user ? (
         <>
+          <NavLink to="/profile">Profile</NavLink>
+           &nbsp; | &nbsp;
           <NavLink to="/posts" end>
             Post List
           </NavLink>
