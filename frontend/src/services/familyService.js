@@ -1,4 +1,3 @@
-// services/familyService.js
 export async function addFamilyMember(memberData) {
   const res = await fetch("/api/families/members", {
     method: "POST",

@@ -18,7 +18,9 @@ export default function NavBar({ user, setUser }) {
       {user ? (
         <>
           <NavLink to="/profile">Profile</NavLink>
-           &nbsp; | &nbsp;
+          &nbsp; | &nbsp;
+          <NavLink to="/family-tree">Family Tree</NavLink> 
+          &nbsp; | &nbsp;
           <NavLink to="/posts" end>
             Post List
           </NavLink>
