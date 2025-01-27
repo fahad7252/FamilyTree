@@ -5,10 +5,6 @@ async function addMember(req, res) {
     console.log("Received data:", req.body);
     console.log("User ID:", req.user ? req.user._id : "No user ID found");
 
-    if (!req.user || !req.user._id) {
-      return res.status(400).json({ error: "User not authenticated" });
-    }
-
     const member = await FamilyMember.create({
       name: req.body.name,
       birthDate: req.body.birthDate,

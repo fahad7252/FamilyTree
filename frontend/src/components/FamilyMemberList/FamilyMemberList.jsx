@@ -10,7 +10,7 @@ export default function FamilyMemberList() {
     async function fetchMembers() {
       try {
         const data = await familyService.getFamilyMembers();
-        console.log('Fetched members:', data); // Debugging log
+        console.log('Fetched members:', data); 
         setMembers(data);
       } catch (error) {
         console.error('Error fetching members:', error);
@@ -20,7 +20,7 @@ export default function FamilyMemberList() {
       }
     }
     fetchMembers();
-  }, []); // Empty dependency array ensures this runs once when the component mounts
+  }, []); 
 
   if (loading) {
     return <p>Loading...</p>;

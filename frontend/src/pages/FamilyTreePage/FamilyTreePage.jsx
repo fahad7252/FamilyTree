@@ -1,6 +1,6 @@
 // src/pages/FamilyTreePage/FamilyTreePage.jsx
 import React, { useState } from 'react';
-import FamilyTree from '../../components/FamilyTree/FamilyTree';
+//import FamilyTree from '../../components/FamilyTree/FamilyTree';
 import './FamilyTreePage.css';
 
 export default function FamilyTreePage({ user }) {
