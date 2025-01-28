@@ -10,6 +10,8 @@ import LogInPage from '../LogInPage/LogInPage';
 import NavBar from '../../components/NavBar/NavBar';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import FamilyTreePage from '../FamilyTreePage/FamilyTreePage';
+import MemberDetailsPage from '../MemberDetailsPage/MemberDetailsPage';
+
 import { Routes, Route } from 'react-router-dom';
 //import ProfilePage from './pages/ProfilePage/ProfilePage';
 
@@ -27,7 +29,8 @@ export default function App() {
             <Routes>
             <Route path="/" element={<HomePage />} exact />
             <Route path="/profile" element={<ProfilePage user={user} />} />
-            <Route path="/family-tree" element={<FamilyTreePage />} />   
+            <Route path="/family-tree" element={<FamilyTreePage />} /> 
+            <Route path="/members/:id" element={<MemberDetailsPage />} />
             <Route path="/posts" element={<PostListPage />} />
             <Route path="/posts/new" element={<NewPostPage />} />
   </Routes>

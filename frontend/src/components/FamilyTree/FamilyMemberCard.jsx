@@ -112,16 +112,24 @@ const FamilyMemberCard = ({
                                 className="name-input"
                             />
                         ) : (
-                            <div className="name-container">
-                                <div className="member-name">{member.name}</div>
-                                <button
-                                    onClick={() => setIsEditing(true)}
-                                    className="edit-button"
-                                    title="Edit name"
-                                >
-                                    <Pencil size={12} />
-                                </button>
-                            </div>
+                            
+<div className="name-container">
+    <div className="member-name">{member.name}</div>
+    <button
+        onClick={() => setIsEditing(true)}
+        className="edit-button"
+        title="Edit name"
+    >
+        <Pencil size={12} />
+    </button>
+    <button
+        onClick={() => window.location.href = `/members/${member.id}`}
+        className="details-button"
+        title="View Details"
+    >
+        <User size={12} />
+    </button>
+</div>
                         )}
                         <div className="member-type">{member.type}</div>
                     </div>

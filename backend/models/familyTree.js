@@ -1,4 +1,3 @@
-// models/familyTree.js
 const mongoose = require("mongoose");
 
 const MemberSchema = new mongoose.Schema(
@@ -21,31 +20,35 @@ const MemberSchema = new mongoose.Schema(
       x: { type: Number, required: true },
       y: { type: Number, required: true },
     },
+    details: {
+      birthDate: {
+        type: Date,
+      },
+      birthPlace: {
+        type: String,
+        trim: true,
+      },
+      occupation: {
+        type: String,
+        trim: true,
+      },
+      address: {
+        type: String,
+        trim: true,
+      },
+      contact: {
+        type: String,
+        trim: true,
+      },
+      notes: {
+        type: String,
+        trim: true,
+      },
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const ConnectionSchema = new mongoose.Schema({
-  from: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Member",
-    required: true,
-  },
-  to: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Member",
-    required: true,
-  },
-  relationshipType: {
-    type: String,
-    enum: ["parent-child", "spouse", "sibling"],
-    required: true,
-  },
-});
-
-module.exports = {
-  Member: mongoose.model("Member", MemberSchema),
-  Connection: mongoose.model("Connection", ConnectionSchema),
-};
+module.exports = mongoose.model("Member", MemberSchema);
