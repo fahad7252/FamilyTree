@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { User, Plus, X, Pencil } from 'lucide-react';
+
 import './FamilyMemberCard.css';
 
 

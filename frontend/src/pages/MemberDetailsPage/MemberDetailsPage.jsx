@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './MemberDetailsPage.css';
-
+import * as familyTreeService from '../../services/familyTreeService';
 const MemberDetailsPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();

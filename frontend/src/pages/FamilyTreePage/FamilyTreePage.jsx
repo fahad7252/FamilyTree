@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
 import FamilyMemberCard from '../../components/FamilyTree/FamilyMemberCard';
+import * as familyTreeService from '../../services/familyTreeService';
 import './FamilyTreePage.css';
 
 const FamilyTreePage = () => {
