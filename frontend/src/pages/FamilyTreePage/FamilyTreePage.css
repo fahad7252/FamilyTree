@@ -1,37 +1,34 @@
-/* src/pages/FamilyTreePage/FamilyTreePage.css */
-.familytree-page {
+.tree-container {
     width: 100%;
-    min-height: calc(100vh - var(--navbar-height));
-    background-color: #f9fafb;
-    padding: 20px;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(249, 250, 251);
 }
 
-.familytree-container {
-    max-width: 1200px;
-    margin: 0 auto;
+.zoom-controls {
+    display: flex;
+    gap: 0.5rem;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.tree-name-input {
-    width: 100%;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    border-bottom: 2px solid transparent;
-    outline: none;
-    transition: border-color 0.2s;
+.zoom-button {
+    padding: 0.5rem;
+    border-radius: 9999px;
+    transition: all 0.2s;
 }
 
-.tree-name-input:hover {
-    border-bottom-color: #e5e7eb;
+.zoom-button:hover {
+    background-color: rgb(243, 244, 246);
 }
 
-.tree-name-input:focus {
-    border-bottom-color: #3b82f6;
+.draw-mode {
+    cursor: crosshair;
+}
+
+.dragging {
+    cursor: grabbing;
 }
