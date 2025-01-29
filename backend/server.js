@@ -25,8 +25,9 @@ app.use("/api/auth", require("./routes/auth"));
 app.use(require("./middleware/ensureLoggedIn"));
 
 app.use("/api/profiles", require("./routes/profiles"));
+app.use("/api/families", require("./routes/families"));
 app.use("/api/posts", require("./routes/posts"));
-app.use("/api/familyTree", require("./routes/familyTree"));
+
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });

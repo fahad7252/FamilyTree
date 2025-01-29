@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import * as familyService from '../../services/familyService';
+
 
 export default function ProfilePage({ user }) {
 

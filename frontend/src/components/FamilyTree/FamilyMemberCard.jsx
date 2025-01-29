@@ -1,10 +1,9 @@
 
-
+// components/FamilyTree/FamilyMemberCard/FamilyMemberCard.jsx
 import React, { useState, useRef } from 'react';
 import { User, Plus, X, Pencil } from 'lucide-react';
-
 import './FamilyMemberCard.css';
-
+import { useNavigate } from 'react-router-dom';
 
 const FamilyMemberCard = ({ 
     member, 
@@ -14,15 +13,13 @@ const FamilyMemberCard = ({
     onDrag, 
     onAdd, 
     onDelete, 
-    onNameChange, 
-    onClick, 
-    isSelected, 
-    isDrawMode 
+    onNameChange 
 }) => {
     const [isDragging, setIsDragging] = useState(false);
     const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
     const [isEditing, setIsEditing] = useState(false);
     const cardRef = useRef(null);
+    const navigate = useNavigate();
 
     const getCardStyle = (memberType, level) => {
         if (memberType === 'spouse') {
@@ -38,11 +35,6 @@ const FamilyMemberCard = ({
     };
 
     const handleMouseDown = (e) => {
-        if (isDrawMode) {
-            e.stopPropagation();
-            onClick();
-            return;
-        }
         setIsDragging(true);
         setDragStart({
             x: e.clientX - position.x,
@@ -52,7 +44,7 @@ const FamilyMemberCard = ({
 
     const handleMouseMove = (e) => {
         if (!isDragging) return;
-        onDrag(member.id, {
+        onDrag(member._id, {
             x: e.clientX - dragStart.x,
             y: e.clientY - dragStart.y
         });
@@ -68,33 +60,32 @@ const FamilyMemberCard = ({
             y: position.y + (type === 'child' ? 150 : type === 'parent' ? -150 : 0)
         };
         const newMember = {
-            id: Date.now(),
             name: `New ${type}`,
             type: type,
             level: type === 'parent' ? level + 1 : type === 'child' ? level - 1 : level,
             position: newPosition
         };
-        onAdd(newMember, member.id);
+        onAdd(newMember, member._id);
     };
+    
 
-    const cardClassName = `${getCardStyle(member.type, level)} ${isDragging ? 'dragging' : ''} ${isSelected ? 'selected' : ''}`;
+    const cardClassName = `${getCardStyle(member.type, level)} ${isDragging ? 'dragging' : ''}`;
 
     return (
         <div
             ref={cardRef}
-    className={cardClassName}
-    style={{
-        transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-        transformOrigin: 'center center',
-        width: '180px',
-        zIndex: isDragging ? 10 : 1,
-        transition: isDragging ? 'none' : 'transform 0.1s ease-in-out'
-    }}
-    onMouseDown={handleMouseDown}
-    onMouseMove={handleMouseMove}
-    onMouseUp={handleMouseUp}
-    onMouseLeave={handleMouseUp}
-
+            className={cardClassName}
+            style={{
+                transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                transformOrigin: 'center center',
+                width: '180px',
+                zIndex: isDragging ? 10 : 1,
+                transition: isDragging ? 'none' : 'transform 0.1s ease-in-out'
+            }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
         >
             <div className="card-content">
                 <div className="level-indicator">
@@ -107,35 +98,34 @@ const FamilyMemberCard = ({
                             <input
                                 type="text"
                                 value={member.name}
-                                onChange={(e) => onNameChange(member.id, e.target.value)}
+                                onChange={(e) => onNameChange(member._id, e.target.value)}
                                 onBlur={() => setIsEditing(false)}
                                 autoFocus
                                 className="name-input"
                             />
                         ) : (
-                            
-<div className="name-container">
-    <div className="member-name">{member.name}</div>
-    <button
-        onClick={() => setIsEditing(true)}
-        className="edit-button"
-        title="Edit name"
-    >
-        <Pencil size={12} />
-    </button>
-    <button
-        onClick={() => window.location.href = `/members/${member.id}`}
-        className="details-button"
-        title="View Details"
-    >
-        <User size={12} />
-    </button>
-</div>
+                            <div className="name-container">
+                                <div className="member-name">{member.name}</div>
+                                <button
+                                    onClick={() => setIsEditing(true)}
+                                    className="edit-button"
+                                    title="Edit name"
+                                >
+                                    <Pencil size={12} />
+                                </button>
+                                <button
+                                    onClick={() => navigate(`/members/${member._id}`)}
+                                    className="details-button"
+                                    title="View Details"
+                                >
+                                    <User size={12} />
+                                </button>
+                            </div>
                         )}
                         <div className="member-type">{member.type}</div>
                     </div>
                     <button
-                        onClick={() => onDelete(member.id)}
+                        onClick={() => onDelete(member._id)}
                         className="delete-button"
                     >
                         <X size={14} />
@@ -174,3 +164,4 @@ const FamilyMemberCard = ({
 };
 
 export default FamilyMemberCard;
+
