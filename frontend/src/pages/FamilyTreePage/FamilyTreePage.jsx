@@ -1,5 +1,5 @@
 
-// pages/FamilyTreePage/FamilyTreePage.jsx
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
@@ -187,8 +187,8 @@ const FamilyTreePage = () => {
             >
                 {members.map(member => (
                     <FamilyMemberCard
-                key={member._id}       // Use member._id as the key
-                member={member}         // Pass the original member object
+                key={member._id}      
+                member={member}         
                 level={member.level}
                 scale={scale}
                 position={member.position}

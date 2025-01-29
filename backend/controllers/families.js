@@ -65,6 +65,21 @@ async function updatePosition(req, res) {
     res.status(400).json({ error: err.message });
   }
 }
+async function updateMemberDetails(req, res) {
+  try {
+    const updatedMember = await Family.findOneAndUpdate(
+      { _id: req.params.id, user: req.user._id },
+      { details: req.body },
+      { new: true }
+    );
+    if (!updatedMember) {
+      return res.status(404).json({ error: "Member not found" });
+    }
+    res.json(updatedMember);
+  } catch (err) {
+    res.status(400).json({ error: "Failed to update member details" });
+  }
+}
 
 module.exports = {
   getMembers,
@@ -72,4 +87,5 @@ module.exports = {
   updateMember,
   deleteMember,
   updatePosition,
+  updateMemberDetails,
 };

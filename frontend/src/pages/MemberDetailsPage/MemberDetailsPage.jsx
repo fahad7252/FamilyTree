@@ -1,8 +1,13 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import * as familyTreeService from '../../services/familyTreeService';
 import './MemberDetailsPage.css';
+
+const formatDateForInput = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
+};
 
 const MemberDetailsPage = () => {
     const { id } = useParams();
@@ -11,22 +16,37 @@ const MemberDetailsPage = () => {
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        
-        setMember({
-            id,
-            name: "Member",
-            type: "",
-            level: 0,
-            details: {
-                birthDate: "",
-                birthPlace: "",
-                occupation: "",
-                address: "",
-                contact: "",
-                notes: "Some notes about the member"
+        async function loadMember() {
+            try {
+                const members = await familyTreeService.getFamilyMembers();
+                const foundMember = members.find(m => m._id === id);
+                if (foundMember) {
+                    setMember(foundMember);
+                }
+            } catch (err) {
+                console.error('Error loading member:', err);
             }
-        });
+        }
+        loadMember();
     }, [id]);
+
+    const handleSave = async () => {
+        try {
+            const details = {
+                birthDate: member.details?.birthDate || '',
+                birthPlace: member.details?.birthPlace || '',
+                occupation: member.details?.occupation || '',
+                address: member.details?.address || '',
+                contact: member.details?.contact || '',
+                notes: member.details?.notes || ''
+            };
+
+            await familyTreeService.updateMemberDetails(id, details);
+            setIsEditing(false);
+        } catch (err) {
+            console.error('Error saving member:', err);
+        }
+    };
 
     if (!member) {
         return <div>Loading...</div>;
@@ -40,7 +60,7 @@ const MemberDetailsPage = () => {
                 </button>
                 <h1>{member.name}'s Details</h1>
                 <button 
-                    onClick={() => setIsEditing(!isEditing)}
+                    onClick={() => isEditing ? handleSave() : setIsEditing(true)}
                     className="edit-button"
                 >
                     {isEditing ? 'Save' : 'Edit'}
@@ -56,7 +76,7 @@ const MemberDetailsPage = () => {
                             {isEditing ? (
                                 <input 
                                     type="text" 
-                                    value={member.name}
+                                    value={member.name || ''}
                                     onChange={(e) => setMember({...member, name: e.target.value})}
                                 />
                             ) : (
@@ -72,14 +92,14 @@ const MemberDetailsPage = () => {
                             {isEditing ? (
                                 <input 
                                     type="date" 
-                                    value={member.details.birthDate}
+                                    value={formatDateForInput(member.details?.birthDate)}
                                     onChange={(e) => setMember({
                                         ...member, 
                                         details: {...member.details, birthDate: e.target.value}
                                     })}
                                 />
                             ) : (
-                                <span>{member.details.birthDate}</span>
+                                <span>{member.details?.birthDate ? new Date(member.details.birthDate).toLocaleDateString() : ''}</span>
                             )}
                         </div>
                         <div className="detail-item">
@@ -87,14 +107,14 @@ const MemberDetailsPage = () => {
                             {isEditing ? (
                                 <input 
                                     type="text" 
-                                    value={member.details.birthPlace}
+                                    value={member.details?.birthPlace || ''}
                                     onChange={(e) => setMember({
                                         ...member, 
                                         details: {...member.details, birthPlace: e.target.value}
                                     })}
                                 />
                             ) : (
-                                <span>{member.details.birthPlace}</span>
+                                <span>{member.details?.birthPlace || ''}</span>
                             )}
                         </div>
                     </div>
@@ -108,14 +128,14 @@ const MemberDetailsPage = () => {
                             {isEditing ? (
                                 <input 
                                     type="text" 
-                                    value={member.details.occupation}
+                                    value={member.details?.occupation || ''}
                                     onChange={(e) => setMember({
                                         ...member, 
                                         details: {...member.details, occupation: e.target.value}
                                     })}
                                 />
                             ) : (
-                                <span>{member.details.occupation}</span>
+                                <span>{member.details?.occupation || ''}</span>
                             )}
                         </div>
                         <div className="detail-item">
@@ -123,14 +143,14 @@ const MemberDetailsPage = () => {
                             {isEditing ? (
                                 <input 
                                     type="text" 
-                                    value={member.details.address}
+                                    value={member.details?.address || ''}
                                     onChange={(e) => setMember({
                                         ...member, 
                                         details: {...member.details, address: e.target.value}
                                     })}
                                 />
                             ) : (
-                                <span>{member.details.address}</span>
+                                <span>{member.details?.address || ''}</span>
                             )}
                         </div>
                         <div className="detail-item">
@@ -138,14 +158,14 @@ const MemberDetailsPage = () => {
                             {isEditing ? (
                                 <input 
                                     type="text" 
-                                    value={member.details.contact}
+                                    value={member.details?.contact || ''}
                                     onChange={(e) => setMember({
                                         ...member, 
                                         details: {...member.details, contact: e.target.value}
                                     })}
                                 />
                             ) : (
-                                <span>{member.details.contact}</span>
+                                <span>{member.details?.contact || ''}</span>
                             )}
                         </div>
                     </div>
@@ -155,7 +175,7 @@ const MemberDetailsPage = () => {
                     <h2>Notes</h2>
                     {isEditing ? (
                         <textarea 
-                            value={member.details.notes}
+                            value={member.details?.notes || ''}
                             onChange={(e) => setMember({
                                 ...member, 
                                 details: {...member.details, notes: e.target.value}
@@ -164,7 +184,7 @@ const MemberDetailsPage = () => {
                             className="w-full p-2 border rounded"
                         />
                     ) : (
-                        <p>{member.details.notes}</p>
+                        <p>{member.details?.notes || ''}</p>
                     )}
                 </div>
             </div>

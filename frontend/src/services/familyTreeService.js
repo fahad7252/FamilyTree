@@ -59,3 +59,15 @@ export async function updateMemberPosition(id, position) {
   });
   return handleResponse(res);
 }
+
+export async function updateMemberDetails(id, details) {
+  const res = await fetch(`/api/families/members/${id}/details`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(details),
+  });
+  return handleResponse(res);
+}

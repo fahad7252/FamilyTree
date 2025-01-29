@@ -11,6 +11,12 @@ router.put("/members/:id", ensureLoggedIn, familiesCtrl.updateMember);
 
 router.delete("/members/:id", ensureLoggedIn, familiesCtrl.deleteMember);
 
+router.put(
+  "/members/:id/details",
+  ensureLoggedIn,
+  familiesCtrl.updateMemberDetails
+);
+
 router.patch(
   "/members/:id/position",
   ensureLoggedIn,
