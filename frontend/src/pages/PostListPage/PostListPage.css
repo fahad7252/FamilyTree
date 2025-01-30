@@ -1,11 +1,27 @@
 .post-item-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
 }
 
-.post-item-container > article {
-  border: 0.5vmin dashed rebeccapurple;
-  padding: 2vmin;
-  border-radius: 0.5vmin;
+.post-item-container>article {
+  background: rgba(222, 184, 135, 0.9);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 2px solid #8B4513;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.post-item-container>article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .post-item-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
 }

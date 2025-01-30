@@ -17,7 +17,7 @@ export default function PostListPage() {
 
   return (
     <>
-      <h1>Post List</h1>
+      <h1>Memories</h1>
       <section className="post-item-container">{postItems}</section>
     </>
   );

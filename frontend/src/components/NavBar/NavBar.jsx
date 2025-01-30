@@ -22,7 +22,7 @@ export default function NavBar({ user, setUser }) {
           <NavLink to="/family-tree">Family Tree</NavLink> 
           &nbsp; | &nbsp;
           <NavLink to="/posts" end>
-            Post List
+            Memories
           </NavLink>
           &nbsp; | &nbsp;
           <NavLink to="/posts/new">New Post</NavLink>

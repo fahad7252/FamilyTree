@@ -1,0 +1,41 @@
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #cfe49e;
+}
+
+.basic-info {
+    background-color: #cfff30;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-message {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    border-left: 4px solid #8B4513;
+    color: #2C3E50;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.details-button {
+    background-color: #8B4513;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+    background-color: #A0522D;
+}

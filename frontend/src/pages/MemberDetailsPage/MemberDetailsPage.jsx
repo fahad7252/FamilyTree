@@ -56,7 +56,7 @@ const MemberDetailsPage = () => {
         <div className="member-details-page">
             <div className="header">
                 <button onClick={() => navigate(-1)} className="back-button">
-                    Back to Tree
+                    Back 
                 </button>
                 <h1>{member.name}'s Details</h1>
                 <button 
