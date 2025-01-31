@@ -6,7 +6,7 @@ Family Tree - keep your legacy alive
 
 Overview - Its a family member information and building your own family tree with memories web app,
 
-Features- its a crud app you can create edit update and delete your member tree drag and drop them also post memories  
+Features- its a MernStack full crud app you can create edit update and delete your  FamilyTree drag and drop them also post memories  
 future updates - adding pictures and videos also add pictures of members in the members details page , adding connection lines between member cards, 
 Website to the app - https://familytre-998cac520a22.herokuapp.com/
 
