@@ -16,7 +16,9 @@ Family Tree - keep your legacy alive
 - Adding pictures and videos.
 - Add pictures of members in the members details page.
 - Adding connection lines between member cards.
-- Website to the app: (https://familytre-998cac520a22.herokuapp.com/)
+
+**Website to the app:**
+-[https://familytre-998cac520a22.herokuapp.com/](https://familytre-998cac520a22.herokuapp.com/)
 
 **Project Planning Link:**
 - [Project Planning Board](https://trello.com/b/Kwa1BzYO/project-3)
