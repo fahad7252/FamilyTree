@@ -12,7 +12,7 @@ Website to the app - https://familytre-998cac520a22.herokuapp.com/
 
 project Planning link- https://trello.com/b/Kwa1BzYO/project-3
 
-Technologies and libraries used: Exress.js , Node.js, MongoDB, REACT , CSS, TailwindCSS, JavaScript, MDN reference, REACT Reference, SEB-112 Crud app starter lab General Assembly, Chat Gpt for quick references and in-depth explainations
+Technologies and libraries used: Exress.js , Node.js, MongoDB, REACT , Lucide-REACT, CSS, TailwindCSS, JavaScript, MDN reference, REACT Reference, SEB-112 Crud app starter lab General Assembly, Chat Gpt for quick references and in-depth explainations
 
 Mentors/Instructors for this project- Mr James Clark and Mr.Jan Horak from General Assembly
 
