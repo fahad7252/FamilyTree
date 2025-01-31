@@ -38,7 +38,7 @@ Family Tree - keep your legacy alive
 - Chat GPT for quick references and in-depth explanations
 
 **Mentors/Instructors for This Project:**
-- Mr. James Clark
+- Mr. James Clark from General Assembly
 - Mr. Jan Horak from General Assembly
 
 **Thanks for Checking Out My Work:**
